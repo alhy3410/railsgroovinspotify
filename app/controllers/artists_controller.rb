@@ -1,8 +1,7 @@
 class ArtistsController < ApplicationController
-
+before_filter = :index
  def index
-   cookies[:spotify_current_user]
-   spotify_user = RSpotify::User.new(hash)
+   spotify_user = JSON.parse cookies[:spotify_current_user]
    if !params[:artist_name].empty?
     @artists = RSpotify::Artist.search(params[:artist_name])
    else

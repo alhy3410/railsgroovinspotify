@@ -4,7 +4,11 @@
  <ul>
    <% album.tracks.each do |track| %>
      <li>
-       <%= track.name %>
+      <%= form_tag playlists_addtrack_path, method: "post" do %>
+        <%= label_tag(:track, track.name) %>
+        <%= hidden_field_tag 'track_id', track.id %>
+        <%= submit_tag "Add Track", class: "btn btn-primary" %>
+      <% end %>
      </li>
    <% end %>
  </ul>

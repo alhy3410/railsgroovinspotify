@@ -2,7 +2,8 @@ class UsersController < ApplicationController
   def spotify
     spotify_user = RSpotify::User.new(request.env['omniauth.auth'])
     hash = spotify_user.to_hash
-    spotify_user = RSpotify::User.new(hash)
-    cookies[:spotify_current_user] = { :value => spotify_user, :expires => 1.day.from_now }
+    user_hash = JSON.generate(hash)
+    @playlists = spotify_user.playlists
+    cookies[:spotify_current_user] = { :value => user_hash, :expires => 1.year.from_now }
   end
 end

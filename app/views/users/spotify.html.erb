@@ -1,2 +1,12 @@
 <h2>You have logged in</h2>
-<%= link_to 'Search', search_path %>
+<h3>Select a playlist for people to add songs to:</h3>
+<% if @playlists.any? %>
+  <%= form_tag("/playlists", method: "post") do %>
+    <% @playlists.each do |playlist| %>
+      <%= radio_button_tag(:playlist, playlist.id ) %>
+      <%= label_tag(:playlist_child, playlist.name) %>
+      <%= playlist.owner.uri %>
+    <% end %>
+    <%= submit_tag("Select Playlist") %>
+  <% end %>
+<% end %>
