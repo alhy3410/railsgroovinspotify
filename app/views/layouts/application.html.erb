@@ -5,8 +5,13 @@
     <%= csrf_meta_tags %>
 </head>
 <body>
-
-<%= yield %>
-
+  <div class="Player">
+    <h1>Playlist</h1>
+    <!-- #spotify_user.playlists.first.uri -->
+    <iframe src="https://embed.spotify.com/?uri=spotify:user:andrewlhy:playlist:7L8AbpkDUbZ9ff5t5pcNM3" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
+  </div>
+  <div class="body">
+    <%= yield %>
+  </div>
 </body>
 </html>
